@@ -181,6 +181,73 @@ Exceptions:
  Type 2: URL myurl=new URL("https://demo.nopcommerce.com/");   
 driver.navigate().to(myurl);  
 
+Check boxes:
+---
+  ``` 
+       List<WebElement>checkboxes=driver.findElements(By.xpath("//input[@class='form-check-input' and @type='checkbox']"));
+        for(WebElement cb:checkboxes) {
+       	cb.click();
+       }
+  ```
+Alerts:
+---
+1. JS Alert
+2. JS Confirm
+3. JS Prompt
+4. Authenticated Popups
+
+We can't inspect these alerts, since alerts are not web elements  
+
+JS Alert:
+```
+driver.findElement(By.xpath("//button[@onclick='jsAlert()']")).click();
+Thread.sleep(5000);
+// switch to alert
+Alert myalert=driver.switchTo().alert();
+System.out.println(myalert.getText());
+myalert.accept();
+```
+JS Confirm:
+```
+driver.findElement(By.xpath("//button[@onclick='jsConfirm()']")).click();
+Alert myalert=driver.switchTo().alert();
+myalert.dismiss();
+```
+JS Prompt:
+```
+driver.findElement(By.xpath("//button[@onclick='jsPrompt()']")).click();
+Thread.sleep(5000);
+Alert myalert=driver.switchTo().alert();
+myalert.sendKeys("Welcome");
+myalert.accept();
+```
+Handling alerts without using switchTo():  
+By Using Explicit wait  
+```
+WebDriver driver=new ChromeDriver();
+WebDriverWait mywait=new WebDriverWait(driver, Duration.ofSeconds(10));
+driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+driver.manage().window().maximize();
+driver.findElement(By.xpath("//button[@onclick='jsAlert()']")).click();
+Thread.sleep(5000);
+Alert myalert=mywait.until(ExpectedConditions.alertIsPresent());
+System.out.println(myalert.getText());
+myalert.accept();
+```
+
+Handling Authenticated Popup:   
+--
+URL : https://the-internet.herokuapp.com/basic_auth    
+Passing username and password along with url:    
+Syntax:  http://username:password@the-internet.herokuapp.com/basic_auth   
+Example: http://admin:admin@the-internet.herokuapp.com/basic_auth
+```
+WebDriver driver=new ChromeDriver();
+//driver.get("https://the-internet.herokuapp.com/basic_auth");
+driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth");
+```
+
+
 
 
 
@@ -225,9 +292,14 @@ driver.navigate().to(myurl);
 
 Live Testing links: 
 --
-1.https://demo.opencart.com/en-gb?route=common/home  
-2.https://demo.nopcommerce.com/  
-3.https://opensource-demo.orangehrmlive.com/web/index.php/auth/login  
+1. https://demo.opencart.com/en-gb?route=common/home  
+2. https://demo.nopcommerce.com/  
+3. https://opensource-demo.orangehrmlive.com/web/index.php/auth/login  
+4. https://the-internet.herokuapp.com/
+5. https://testautomationpractice.blogspot.com/
+6. 
+
+
 
 
 
