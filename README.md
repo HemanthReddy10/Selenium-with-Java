@@ -89,6 +89,123 @@ Difference between css and xpath?
 css: one directional access from top to bottom  
 xpath: 2 directional access from top to bottom and bottom to top  
 
+Xpath axes:
+--
+Hierarchy:  Ancestor-->Parent-->Self-->child-->Descendant     
+Example:   
+Locating Parent:   
+  //input[@id='txtusername']/parent::form     
+  //input[@id='txtusername']/parent::*    
+  //input[@id='txtusername']/..     
+Locating Child :   
+ //div[@id='divUsername']/child::input    
+Locating Ancestor:  
+ //input[@id='txtUsername']/ancestor::form   
+Locating Descendent:  
+ //form[@id='frmLogin']/descendent::input  
+Locating Siblings:  
+ //input[@id='txtUsername']/following::input[2]  
+ //input[@id='txtUsername']/preceding::input[2]    
+
+ 
+ WebDriver Methods:   
+ --
+ 
+ 1.get methods  
+ 2.conditional methods  
+ 3. Browser methods  
+ 4. navigational methods  
+ 5.wait methods   
+
+ 1.get methods: we can access these methods through web driver instance
+ ---
+ get(url): opens url on the browser
+ getTitle():returns title of the page  
+ getCurrentURL(): returns url of the page  
+ getPageSource(): returns source code of the page  
+ getWindowHandle(): returns ID of the single browser window  
+ getWindowHandles(): returns ID of the multiple browser windows  
+ 
+2.Conditional methods: access these commands through webElements  
+--
+returns boolean values  
+isDisplayed()  
+isEnabled()  
+isSelected()  
+
+3.Browser Methods:  
+--
+ close(): close one window wherever driver is focussed 
+ quit(): close all windows  
+ How to close selective windows? based on window id's and page title , we decide what to close   
+
+4.Wait commands:
+--
+Thread.Sleep():  Thread,sleep() is not a wait command   
+adv:  1.easy to use  
+disadv:  1. if the time is not sufficient we will get the error  
+2. wastage of time , so performance issues  
+3. multiple times we need to write  
+
+Synchronization problem during automation???  
+1.implicit wait  :   
+Ex- driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));  (5 seconds is maximum timeout)   
+it will take care of all sync problems ,single command is applicable for all the commands where there is any issue  
+No performance issues since it will not wait 5 seconds if the page is already loaded in 2 seconds   
+Still its hardcoded   
+
+2.explicit wait/fluent wait  :    
+Declare & use   
+Ex: WebDriverWait myWait=new WebDriverWait(driver,Duration.ofSeconds(10));  
+WebElement txtusername=myWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Username']")));  
+txtusername.sendKeys("Admin");  
+Advantages:  
+Conditional method ,so it will work more effectively  
+it will wait for condition to be true, then consider the time   
+
+Exceptions:  
+1.NoSuchElementException--element is not present in the page (sync problem)  
+2.ElementNotFoundException--locater is incorrect  
+
+ 4.Navigational commands:
+ --
+ navigate.to()  
+ navigate.back()  
+ navigate.forward()  
+ navigate.refresh()  
+
+ driver.get()--accepts string format    
+ driver.navigate().to()-- accepts string and url object   
+ driver.get("https://demo.nopcommerce.com/"); 
+ Type 1: driver.navigate().to("https://demo.nopcommerce.com/");  
+ Type 2: URL myurl=new URL("https://demo.nopcommerce.com/");   
+driver.navigate().to(myurl);  
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+ 
+ 
+         
+         
+
+
+
+
+
+
+
 
 
 
@@ -104,6 +221,13 @@ xpath: 2 directional access from top to bottom and bottom to top
 
 
 
+
+
+Live Testing links: 
+--
+1.https://demo.opencart.com/en-gb?route=common/home  
+2.https://demo.nopcommerce.com/  
+3.https://opensource-demo.orangehrmlive.com/web/index.php/auth/login  
 
 
 
