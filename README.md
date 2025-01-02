@@ -246,6 +246,9 @@ WebDriver driver=new ChromeDriver();
 //driver.get("https://the-internet.herokuapp.com/basic_auth");
 driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth");
 ```
+Frames/iframes:
+---
+driver.switchTo().frame(x) x=id,name,webElement   
 
 
 
