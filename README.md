@@ -249,8 +249,70 @@ driver.get("http://admin:admin@the-internet.herokuapp.com/basic_auth");
 Frames/iframes:
 ---
 driver.switchTo().frame(x) x=id,name,webElement   
+driver.switchTo().defaultContent(); //back to webpage
+```
+WebElement frame1=driver.findElement(By.xpath("//frame[@src='frame_1.html']"));
+driver.switchTo().frame(frame1);
+driver.findElement(By.xpath("//input[@name='mytext1']")).sendKeys("Welcome");
+		
+driver.switchTo().defaultContent();
+		
+WebElement frame2=driver.findElement(By.xpath("//frame[@src='frame_2.html']"));
+driver.switchTo().frame(frame2);
+driver.findElement(By.xpath("//input[@name='mytext2']")).sendKeys("Welcome");
+```
+3 types of switching commands:  
+--
+1.browser windows  
+driver.switchTo().window()  
+2.alerts  
+driver.switchTo().alert()  
+driver.switchTo().accept()  
+driver.switchTo().dismiss()    
 
+3.frames    
+driver.switchTo().frame(id)  
+driver.switchTo().frame(name)    
+driver.switchTo().frame(webElement)    
 
+Drop down box:
+--
+1.Select dropdown  
+2.Bootstrap dropdown  
+3.hidden drop down  
+
+Select dropdown:  
+```
+WebElement drpCountryEle=driver.findElement(By.xpath("//*[@id=\"country\"]"));
+Select drpCountry=new Select(drpCountryEle);
+drpCountry.selectByVisibleText("France");
+drpCountry.selectByValue("japan");
+drpCountry.selectByIndex(0);
+
+ List<WebElement>options =drpCountry.getOptions();
+ System.out.println(options.size());
+	   
+ for(WebElement o:options) {
+System.out.println(o.getText());
+}
+
+```
+getOptions()--returns all options as a webelement
+
+Bootstrap dropdown:
+
+```
+	   driver.findElement(By.xpath("//button[contains(@class,'multiselect')]")).click();
+		
+		//select single option
+		driver.findElement(By.xpath("//input[@value='Java']")).click();
+		
+		//capture all the options and find out the size
+		
+		List<WebElement> options=driver.findElements(By.xpath("//ul[contains(@class,'multipath')]//label"));
+		System.out.println(options.size());
+
+```
 
 
 
@@ -302,7 +364,7 @@ Live Testing links:
 4. https://the-internet.herokuapp.com/
 5. https://testautomationpractice.blogspot.com/
 6. https://ui.vision/demo/webtest/frames/
-7. 
+7. https://www.jquery-az.com/boots/demo.php?ex=63.0_2
 
 
 
