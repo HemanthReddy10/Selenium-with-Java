@@ -314,6 +314,24 @@ Bootstrap dropdown:
 
 ```
 
+Hidden Dropdown:   
+Options will be loaded during run time . Loaded Dynamically.  
+We can see the hidden options by using selectors hub features. (Turn on debugger)  
+
+Web Tables:  
+---
+1. Static web table   (Data is static)  
+2. Dyanamic web table  (no of rows keeps on changing)  
+3. Table with pagination  (several tables in different pages)
+
+
+
+
+
+
+
+
+
 
 
 
@@ -365,6 +383,9 @@ Live Testing links:
 5. https://testautomationpractice.blogspot.com/
 6. https://ui.vision/demo/webtest/frames/
 7. https://www.jquery-az.com/boots/demo.php?ex=63.0_2
+8. https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList
+9. https://demo.opencart.com/admin/
+10. 
 
 
 
