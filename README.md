@@ -324,6 +324,73 @@ Web Tables:
 2. Dyanamic web table  (no of rows keeps on changing)  
 3. Table with pagination  (several tables in different pages)
 
+Date pickers/calenders:  
+----
+Type1:  <br>
+<img width="360" alt="Screenshot 2025-01-05 at 1 10 03 PM" src="https://github.com/user-attachments/assets/9da20bee-48bd-4728-835c-563d04538394" />
+
+```
+                driver.switchTo().frame(0);
+		
+		//method1: using sendkeys()
+                //driver.findElement(By.xpath("//input[@id='datepicker']")).sendKeys("04/05/2024");
+		
+		//method2: using date picker
+		//expected data
+		String year="2025";
+		String month="May";
+		String day="20";
+		
+		driver.findElement(By.xpath("//input[@id='datepicker']")).click();
+		
+		//select month and year
+		while(true) {
+		
+		String currentmonth=driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/span[1]")).getText();
+		String currentyear=driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/div/span[2]")).getText();
+		if(currentmonth.equals(month)&& currentyear.equals(year)) {
+			break;
+		}
+		
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[2]/span")).click(); //future date
+		
+              //driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div/a[1]")).click(); //previous date
+		
+		
+		}
+		//selecting day
+		List<WebElement>alldates=driver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']//tbody//tr//td//a"));
+		for(WebElement d:alldates) {
+			if(d.getText().equals(day)) {
+				d.click();
+				break;
+			}
+		}
+	}
+```
+Type 2:  <br>
+<img width="276" alt="Screenshot 2025-01-05 at 1 28 26 PM" src="https://github.com/user-attachments/assets/477b242b-5970-4c87-8582-18c7c8961807" />
+```
+		WebElement yearDropDown=driver.findElement(By.xpath("//*[@class='ui-datepicker-year']"));
+		Select selectYear=new Select(yearDropDown);
+		selectYear.selectByVisibleText(year);
+		//select month
+		WebElement monthDropDown=driver.findElement(By.xpath("//*[@class='ui-datepicker-month']"));
+		Select selectMonth=new Select(monthDropDown);
+		selectMonth.selectByVisibleText(month);
+		
+		//select day
+		
+		List<WebElement>alldays=driver.findElements(By.xpath("//table[@class='ui-datepicker-calendar']//tbody//td//a"));
+		for(WebElement d:alldays) {
+			if(d.getText().equals(day)) {
+				d.click();
+				break;
+			}
+		}
+```
+
+
 
 
 
@@ -385,7 +452,8 @@ Live Testing links:
 7. https://www.jquery-az.com/boots/demo.php?ex=63.0_2
 8. https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList
 9. https://demo.opencart.com/admin/
-10. 
+10. https://jqueryui.com/datepicker/
+11. 
 
 
 
