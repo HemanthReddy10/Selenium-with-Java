@@ -390,6 +390,19 @@ Type 2:  <br>
 		}
 ```
 
+Mouse Actions:
+--
+Mouse hover  : moveToElement(element)  
+right click  : contextClick(element)   
+double click  : doubleClick(element)  
+drag and drop  : dragAndDrop(source,target)  
+
+
+
+gettext() vs getAttribute() :    
+ <input id="xyz">welcome</input>  
+ getText()--. returns innertext -->welcome  
+ getAttribute("id")--> returns the value of an attribute -->xyz  
 
 
 
@@ -453,7 +466,9 @@ Live Testing links:
 8. https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList
 9. https://demo.opencart.com/admin/
 10. https://jqueryui.com/datepicker/
-11. 
+11. https://swisnl.github.io/jQuery-contextMenu/demo.html
+12. https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_ondblclick3
+13. 
 
 
 
